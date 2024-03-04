@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="stock_transport_from_stock_picking_batch" model="ir.ui.view">
+        <field name="name">stock.transport.from.stock.picking.batch</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='scheduled_date']" position="after">
+                <field name="dock_id"/>
+                <field name="vehicle_id" placeholder='Opel GJ45XC1234'/>
+                <field name="vehicle_category_id" placeholder="e.g. Semi-truck"/>
+                <field name="weight" invisible="not vehicle_category_id" widget="progressbar"/>
+                <field name="volume" invisible="not vehicle_category_id" widget="progressbar"/>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="view_inventory_batch_graph" model="ir.ui.view">
+        <field name="name">inventory.batch.graph</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="arch" type="xml">
+            <graph string="Inventory Batch" sample="1">
+                <field name="weight"/>
+                <field name="volume"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="stock_transport_gantt_view" model="ir.ui.view">
+        <field name="name">stock.transport.gantt.view</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.view_move_line_tree_detailed"/>
+        <field name="arch" type="xml">
+            <gantt class="o_mrp_workorder_gantt" date_stop="shedule_date" date_start="creat_date" string="Stock gantt view" default_group_by="fleet_id">
+                <field name="weight"/>
+                <field name="volume"/>
+            </gantt>
+        </field>
+    </record>
+
+   <record id="stock_picking_batch.stock_picking_batch_action" model="ir.actions.act_window">
+        <field name="view_mode">tree,kanban,form,graph</field>
+        <field name="context">{'search_default_draft': True, 'search_default_in_progress': True, 'graph_mode': 'bar', 'graph_groupbys': ['scheduled_date','vehicle_category_id'],}</field>
+   </record>
+</odoo>

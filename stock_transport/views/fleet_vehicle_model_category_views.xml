@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <record id="fleet_vehicle_category_tree" model="ir.ui.view">
+        <field name="name">fleet.vehicle.category.tree</field>
+        <field name="model">fleet.vehicle.model.category</field>
+        <field name="arch" type="xml">
+            <tree string="Fleet category tree" editable="bottom">
+                <field name="name"/>
+                <field name="max_weight"/>
+                <field name="max_volume"/>
+            </tree>
+        </field>
+    </record>
+    
+</odoo>
