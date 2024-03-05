@@ -1,10 +1,9 @@
 {
     'name' : 'Transport Management System',
     'version' : "1.0",
-    'category': 'Human Resources/Fleet',
-    'category': "",
+    'category': 'Inventory/Inventory',
     'discription' : "",
-    'depends': ['stock_picking_batch','fleet','stock'],
+    'depends': ['stock_picking_batch','fleet'],
     'license': "LGPL-3",
     'data': [
         'security/ir.model.access.csv',
@@ -12,5 +11,4 @@
         'views/stock_picking_batch_views.xml',
     ],
     'installable' : True,
-    'application' : True,
 }

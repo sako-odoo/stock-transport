@@ -1,7 +1,7 @@
 {
     'name' : 'Stock inventory',
     'version' : "1.0",
-    'category': 'Human Resources/Fleet',
+    'category': 'Inventory/Inventory',
     'discription' : "",
     'depends': ['stock'],
     'license': "LGPL-3",
@@ -9,5 +9,5 @@
         'views/res_config_settings_views.xml',
     ],
     'installable' : True,
-    'application' : True,
+    'auto_install' : True,
 }
